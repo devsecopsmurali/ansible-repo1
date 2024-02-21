@@ -3,9 +3,9 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  become: false
+  become: true
   vars:
-    ansible_python_interpreter: /root/.local/bin:/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
+    ansible_python_interpreter: /usr/bin/python3
   tasks:
     - name: Create IAM Users
       iam_user:
