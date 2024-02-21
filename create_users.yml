@@ -11,4 +11,4 @@
       iam_user:
         name: 'murali'
         state: present
-        password: 'murali'
+        password: 'Welcome@1234'
