@@ -3,15 +3,9 @@
   hosts: localhost
   connection: local
   gather_facts: false
-
   tasks:
-    - name: Include AWS credentials
-      include_vars: credentials.yml
-
     - name: Create IAM Users
       iam_user:
-        name: "{{ item.name }}"
+        name: 'murali'
         state: present
-        password: "{{ item.password }}"
-        groups: "{{ item.groups }}"
-      with_items: "{{ users }}"
+        password: 'murali'
