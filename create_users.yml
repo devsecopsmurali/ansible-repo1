@@ -9,6 +9,6 @@
   tasks:
     - name: Create IAM Users
       iam_user:
-        name: 'murali'
+        name: 'cherry'
         state: present
-        password: 'Welcome@1234'
+        password: cherry'
