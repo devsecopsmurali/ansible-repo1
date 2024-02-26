@@ -6,7 +6,6 @@
   become: true
   vars:
     ansible_python_interpreter: /usr/bin/python3
-    #username: "{{ username }}"
   tasks:
     - name: Generate Random Password
       community.general.random_password:
@@ -17,7 +16,8 @@
         loweralpha: yes
       register: generated_password
     - name: Create IAM Users
-        iam_user:
-          name: "{{ username }}"
-          state: present
-          password: {{ generated_password.password }}
+      iam_user:
+        name: "{{ username }}"
+        state: present
+        password:
+          "{ generated_password.password }": null
