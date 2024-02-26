@@ -15,9 +15,9 @@
         upperalpha: yes
         loweralpha: yes
       register: generated_password
+
     - name: Create IAM Users
       iam_user:
         name: "{{ username }}"
         state: present
-        password:
-          "{ generated_password.password }": null
+        password: "{{ generated_password.password }}"
