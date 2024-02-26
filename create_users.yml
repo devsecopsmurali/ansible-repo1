@@ -17,7 +17,7 @@
         loweralpha: yes
       register: generated_password
 
-    - name: Display Generated Password
+    - name: Display Generated Password for testing purpose
       debug:
         var: generated_password.password
     
