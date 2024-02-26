@@ -15,4 +15,4 @@
         password: Cherry@cherry1'
     - name: Print Sender's Email ID
       debug:
-        msg: "Sender's Email ID: {{ senderEmail }}"
+        msg: "Sender's Email ID: {{ username }}"
