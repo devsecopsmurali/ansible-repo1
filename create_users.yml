@@ -8,12 +8,21 @@
     ansible_python_interpreter: /usr/bin/python3
 
   tasks:
-    - name: Set random password
-      set_fact:
-        generated_password: "{{ 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()' | random('password', length=12) }}"
+    - name: Generate Password
+      community.general.random_password:
+        length: 12
+        special: yes
+        digits: yes
+        upperalpha: yes
+        loweralpha: yes
+      register: generated_password
+
+    - name: Display Generated Password
+      debug:
+        var: generated_password.password
     
     - name: Create IAM Users
       iam_user:
         name: "{{ username }}"
         state: present
-        password: "{{ generated_password }}"
+        password: "{{ generated_password.password }}"
