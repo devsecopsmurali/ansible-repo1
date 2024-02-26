@@ -3,14 +3,14 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  become: false
+  become: true
   vars:
     ansible_python_interpreter: /usr/bin/python3
-    senderEmail: "{{ senderEmail }}"
+    username: "{{ username }}"
   tasks:
     - name: Create IAM Users
       iam_user:
-        name: 'cherry'
+        name: "{{ username }}"
         state: present
         password: Cherry@cherry1'
     - name: Print Sender's Email ID
