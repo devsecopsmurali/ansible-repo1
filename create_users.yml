@@ -11,7 +11,7 @@
     - name: print the values 
       debug:
         msg: "Sender's user name ID: {{ username }}" 
-        msg: "Sender's Email ID: {{ USER_EMAIL }}"
+        msg: "Sender's Email ID: {{ useremail }}"
     - name: Create IAM Users
       iam_user:
         name: "{{ username }}"
