@@ -8,17 +8,16 @@
     ansible_python_interpreter: /usr/bin/python3
     #username: "{{ username }}"
   tasks:
-    - name: print the values 
-      debug:
-        msg: "Sender's user name ID: {{ username }}"
-    - name: print the values 
-      debug:
-        msg: "Sender's Email ID: {{ useremail }}"
+    - name: Generate Random Password
+      community.general.random_password:
+        length: 12
+        special: yes
+        digits: yes
+        upperalpha: yes
+        loweralpha: yes
+      register: generated_password
     - name: Create IAM Users
-      iam_user:
-        name: "{{ username }}"
-        state: present
-        password: Cherry@cherry1'
-    - name: Print Sender's Email ID
-      debug:
-        msg: "Sender's Email ID: {{ username }}"
+        iam_user:
+          name: "{{ username }}"
+          state: present
+          password: {{ generated_password.password }}
